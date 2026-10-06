@@ -63,13 +63,11 @@ If `package.json` does not exist yet, the first task is scaffolding: follow `doc
 - Secrets live in env vars (`.env.local`, never committed). Keep `.env.example` updated.
 - Before finishing a change: `pnpm lint && pnpm typecheck && pnpm test`.
 
-## Repo layout note
+## Repo
 
-This app lives in the `travel-bnpl/` subfolder of the `andy` repo (next to the unrelated
-Chinbilig Tracker static site). Run every command from inside `travel-bnpl/`; it is its own
-pnpm workspace. The folder is excluded from the Chinbilig Vercel deploy via the root
-`.vercelignore`; deploy it as a separate Vercel project with Root Directory = `travel-bnpl`.
-CI is `.github/workflows/travel-bnpl-ci.yml` at the repo root.
+This is its own repository (`hogjuulelt1-cmyk/Travel-APP`); the app lives at the root. Deploy
+with Vercel as a Next.js project (no Root Directory setting needed). CI is
+`.github/workflows/ci.yml`.
 
 Prisma 7: the generated client is written to `src/generated/prisma` (gitignored; run
 `pnpm db:generate` after `pnpm install`), config lives in `prisma.config.ts`, and the client
@@ -78,9 +76,7 @@ needs the `@prisma/adapter-pg` driver adapter (see `src/lib/db.ts`).
 ## Cloud session notes
 
 - `.claude/hooks/session-start.sh` installs dependencies and generates the Prisma client in
-  Claude Code cloud sessions. Claude Code only reads hooks from the repo root, so the root
-  `.claude/settings.json` must point at `$CLAUDE_PROJECT_DIR/travel-bnpl/.claude/hooks/session-start.sh`
-  (the copy in `travel-bnpl/.claude/settings.json` is the reference config).
+  Claude Code cloud sessions (wired from `.claude/settings.json`).
 - No real payment keys in cloud sessions; use Toss sandbox keys from environment secrets.
 
 <!-- BEGIN:nextjs-agent-rules -->

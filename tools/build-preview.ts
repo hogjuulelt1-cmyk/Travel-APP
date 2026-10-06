@@ -41,7 +41,7 @@ const artJs = bundle("src/lib/art.ts", "ART");
 const matchJs = bundle("src/lib/matching.ts", "MATCH");
 
 const css = `
-/* Layout: one phone-width column; mirrors the travel-bnpl Tailwind pages */
+/* Layout: one phone-width column; mirrors the Next.js Tailwind pages */
 :root{--bg:#fff;--fg:#18181b;--muted:#71717a;--muted-2:#52525b;--line:#e4e4e7;--soft:#f4f4f5;--pill:#18181b;--pill-fg:#fff;--toss:#3182F6;--ok-bg:#d1fae5;--ok-fg:#065f46;--warn-bg:#fef3c7;--warn-fg:#92400e;--info-bg:#e0f2fe;--info-fg:#075985;--bad-bg:#ffe4e6;--bad-fg:#9f1239;--font:ui-sans-serif,system-ui,-apple-system,"Apple SD Gothic Neo","Pretendard","Noto Sans KR",Roboto,sans-serif}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#09090b;--fg:#fafafa;--muted:#a1a1aa;--muted-2:#d4d4d8;--line:#27272a;--soft:#18181b;--pill:#fafafa;--pill-fg:#18181b;--ok-bg:#052e16;--ok-fg:#86efac;--warn-bg:#451a03;--warn-fg:#fcd34d;--info-bg:#082f49;--info-fg:#7dd3fc;--bad-bg:#4c0519;--bad-fg:#fda4af;color-scheme:dark}}
 :root[data-theme="dark"]{--bg:#09090b;--fg:#fafafa;--muted:#a1a1aa;--muted-2:#d4d4d8;--line:#27272a;--soft:#18181b;--pill:#fafafa;--pill-fg:#18181b;--ok-bg:#052e16;--ok-fg:#86efac;--warn-bg:#451a03;--warn-fg:#fcd34d;--info-bg:#082f49;--info-fg:#7dd3fc;--bad-bg:#4c0519;--bad-fg:#fda4af;color-scheme:dark}

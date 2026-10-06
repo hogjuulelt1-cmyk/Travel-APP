@@ -1,10 +1,10 @@
 # 몽글 (Monggle) — Project status
 
 Updated 2026-10-06. One-page summary for anyone (or any Claude chat) picking this up.
-Code lives in the `andy` repo, folder `travel-bnpl/`, branch `claude/travel-bnpl`.
+Code lives in the `hogjuulelt1-cmyk/Travel-APP` repo, branch `main`.
 
 - Clickable demo (private, share from the page's Share menu): https://claude.ai/artifact/NPyd6LSYbr397jnBnm8sPq
-- Code: https://github.com/hogjuulelt1-cmyk/andy/tree/claude/travel-bnpl/travel-bnpl
+- Code: https://github.com/hogjuulelt1-cmyk/Travel-APP
 - Detail docs: `CLAUDE.md`, `docs/product-spec.md`, `docs/business-model.md`, `docs/packages.md`, `docs/tech-stack.md`, `docs/risks-and-open-questions.md`, `docs/roadmap.md`
 
 ## What it is
@@ -55,7 +55,7 @@ Tech: Next.js 16 (App Router, TS strict, Tailwind 4), Prisma 7 schema ready (not
 | Real database (bookings, users, groups, chat)                                           | `DATABASE_URL` (Supabase/Neon); schema + seed are ready                                                                                      |
 | Real login                                                                              | Kakao / Naver OAuth keys (Auth.js)                                                                                                           |
 | Real Toss Payments                                                                      | Toss merchant (Korean entity or partner) + sandbox keys; checkout UI already mirrors the widget                                              |
-| Live URL                                                                                | Vercel project with Root Directory `travel-bnpl`, or a `VERCEL_TOKEN` in the cloud environment                                               |
+| Live URL                                                                                | Vercel project importing this repo, or a `VERCEL_TOKEN` in the cloud environment                                                             |
 | Photos                                                                                  | Licensed Mongolia photos                                                                                                                     |
 | Admin (packages/departures CRUD, payments board, supplier costs in MNT → margin report) | Database first                                                                                                                               |
 | Reminders (remainder due, group confirmed)                                              | Email first, KakaoTalk 알림톡 later                                                                                                          |
