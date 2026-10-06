@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-test("full demo flow: login → join → mock Toss deposit → my trips → group → remainder", async ({
+test("full demo flow: Kakao login → join → mock Toss deposit → my trips → group → remainder", async ({
   page,
 }) => {
   const errors: string[] = [];
@@ -10,8 +10,10 @@ test("full demo flow: login → join → mock Toss deposit → my trips → grou
   await page.goto("/departures/gobi-2027-05-29/join");
   await page.getByRole("link", { name: "로그인하고 참여하기" }).click();
   await expect(page).toHaveURL(/\/login\?next=/);
+  await page.getByRole("link", { name: "카카오로 시작하기" }).click();
+  await expect(page).toHaveURL(/\/login\/kakao\?next=/);
   await page.getByLabel(/이름/).fill("테스트");
-  await page.getByRole("button", { name: "카카오로 시작하기" }).click();
+  await page.getByRole("button", { name: "동의하고 계속" }).click();
 
   // Back on the join page, now with the pay button.
   await expect(page).toHaveURL(/\/departures\/gobi-2027-05-29\/join$/);
@@ -50,6 +52,10 @@ test("full demo flow: login → join → mock Toss deposit → my trips → grou
   await expect(page.getByText("결제 완료")).toBeVisible();
   await expect(page.getByText("카드 3개월 무이자")).toBeVisible();
 
+  // Bottom tab bar is present and marks the current tab.
+  const nav = page.getByRole("navigation", { name: "Main" });
+  await expect(nav.getByRole("link", { name: "내 여행" })).toHaveAttribute("aria-current", "page");
+
   const overflow = await page.evaluate(
     () => document.documentElement.scrollWidth > document.documentElement.clientWidth,
   );
@@ -58,10 +64,10 @@ test("full demo flow: login → join → mock Toss deposit → my trips → grou
 });
 
 test("cancelling at checkout removes the pending booking", async ({ page }) => {
-  await page.goto("/login");
+  await page.goto("/login/naver");
   await page.getByLabel(/이름/).fill("취소");
-  await page.getByRole("button", { name: "네이버로 시작하기" }).click();
-  await expect(page).toHaveURL(/\/my$/);
+  await page.getByRole("button", { name: "동의하고 계속" }).click();
+  await expect(page).toHaveURL(/\/match$/); // first login lands on the questionnaire
   await page.goto("/departures/terelj-2027-04-30/join");
   await page.getByRole("button", { name: /토스로 예약금 결제/ }).click();
   await expect(page).toHaveURL(/\/pay\//);

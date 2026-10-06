@@ -9,11 +9,23 @@
 import "server-only";
 import { cookies } from "next/headers";
 
-export type DemoUser = {
+export type Provider = "kakao" | "naver" | "email";
+
+export type DemoAccount = {
   id: string;
   name: string;
-  provider: "kakao" | "naver";
+  provider: Provider;
+  email: string;
+  /** sha256 hex of the password; only for provider "email" (demo only). */
+  passwordHash?: string;
+  gender: "f" | "m" | "other";
+  birthYear?: number;
+  intro?: string;
+  createdAt: string;
 };
+
+/** The signed-in identity. Kept small; profile fields live on the account. */
+export type DemoUser = Pick<DemoAccount, "id" | "name" | "provider" | "email">;
 
 export type BookingStatus = "pending_deposit" | "seat_held" | "paid_in_full";
 export type PaymentMethod = "card" | "tosspay" | "kakaopay" | "naverpay";
@@ -36,6 +48,7 @@ export type DemoBooking = {
 };
 
 const USER_COOKIE = "demo_user";
+const ACCOUNTS_COOKIE = "demo_accounts";
 const BOOKINGS_COOKIE = "demo_bookings";
 const COOKIE_OPTS = {
   httpOnly: true,
@@ -104,4 +117,32 @@ export async function setProfile(profile: TravelProfile | null): Promise<void> {
   const jar = await cookies();
   if (profile) jar.set(PROFILE_COOKIE, JSON.stringify(profile), COOKIE_OPTS);
   else jar.delete(PROFILE_COOKIE);
+}
+
+// ---- demo accounts (sign up / log in) ----
+
+export async function listAccounts(): Promise<DemoAccount[]> {
+  const jar = await cookies();
+  return parse<DemoAccount[]>(jar.get(ACCOUNTS_COOKIE)?.value, []);
+}
+
+export async function saveAccounts(accounts: DemoAccount[]): Promise<void> {
+  const jar = await cookies();
+  // Cookies are ~4KB; the demo keeps the last few accounts only.
+  jar.set(ACCOUNTS_COOKIE, JSON.stringify(accounts.slice(-5)), COOKIE_OPTS);
+}
+
+export async function findAccountByEmail(email: string): Promise<DemoAccount | null> {
+  const e = email.trim().toLowerCase();
+  return (await listAccounts()).find((a) => a.email === e) ?? null;
+}
+
+export async function getAccount(): Promise<DemoAccount | null> {
+  const user = await getUser();
+  if (!user) return null;
+  return (await listAccounts()).find((a) => a.id === user.id) ?? null;
+}
+
+export function toUser(a: DemoAccount): DemoUser {
+  return { id: a.id, name: a.name, provider: a.provider, email: a.email };
 }

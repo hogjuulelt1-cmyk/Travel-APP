@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { SiteHeader } from "@/components/site-header";
 import { formatDay, formatRange } from "@/lib/dates";
 import { t } from "@/lib/format";
@@ -36,7 +36,11 @@ export default async function MyPage({ params, searchParams }: Props) {
   const { paid } = await searchParams;
   const m = getMessages(locale);
   const user = await getUser();
-  const bookings = user ? await listBookings() : [];
+  if (!user)
+    redirect(
+      localePath(locale, "/login") + `?next=${encodeURIComponent(localePath(locale, "/my"))}`,
+    );
+  const bookings = await listBookings();
 
   const rows = await Promise.all(
     bookings.map(async (b) => {

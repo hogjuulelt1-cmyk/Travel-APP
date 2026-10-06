@@ -60,13 +60,28 @@ export default async function Home({ params }: Props) {
       </ol>
 
       <section className="flex flex-col gap-4">
-        <h2 className="text-xl font-bold">{m.packages.heading}</h2>
+        <div className="flex items-baseline justify-between">
+          <h2 className="text-xl font-bold">{m.packages.heading}</h2>
+          <Link
+            href={localePath(locale, "/departures")}
+            className="text-sm text-zinc-500 underline-offset-4 hover:underline dark:text-zinc-400"
+          >
+            {m.nav.departures} →
+          </Link>
+        </div>
         <div className="flex flex-col gap-3">
           {packages.map((p) => (
             <PackageCard key={p.slug} pkg={p} locale={locale} />
           ))}
         </div>
       </section>
+
+      <Link
+        href={localePath(locale, "/about")}
+        className="rounded-2xl bg-zinc-100 px-4 py-3 text-sm font-medium dark:bg-zinc-900"
+      >
+        {m.nav.about} →
+      </Link>
     </main>
   );
 }

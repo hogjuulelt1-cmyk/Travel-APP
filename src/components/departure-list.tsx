@@ -30,7 +30,16 @@ function SeatMeter({ d }: { d: Departure }) {
   );
 }
 
-export function DepartureList({ departures, locale }: { departures: Departure[]; locale: Locale }) {
+export function DepartureList({
+  departures,
+  locale,
+  titleOf,
+}: {
+  departures: Departure[];
+  locale: Locale;
+  /** When set, each card shows its package title (for cross-package lists). */
+  titleOf?: (packageSlug: string) => string;
+}) {
   const m = getMessages(locale);
   if (departures.length === 0) {
     return <p className="text-sm text-zinc-500 dark:text-zinc-400">{m.detail.noDepartures}</p>;
@@ -59,7 +68,14 @@ export function DepartureList({ departures, locale }: { departures: Departure[];
                   className="flex flex-col gap-3 rounded-2xl border border-zinc-200 p-4 dark:border-zinc-800"
                 >
                   <div className="flex items-start justify-between gap-3">
-                    <p className="font-semibold">{formatRange(d.startDate, d.endDate, locale)}</p>
+                    <div className="flex flex-col">
+                      {titleOf && (
+                        <span className="text-xs text-zinc-500 dark:text-zinc-400">
+                          {titleOf(d.packageSlug)}
+                        </span>
+                      )}
+                      <p className="font-semibold">{formatRange(d.startDate, d.endDate, locale)}</p>
+                    </div>
                     <span
                       className={
                         "shrink-0 rounded-full px-2.5 py-0.5 text-xs font-medium " +

@@ -28,7 +28,10 @@
     "login": "Log in",
     "logout": "Log out",
     "demo": "Demo",
-    "match": "Find companions"
+    "match": "Companions",
+    "me": "Me",
+    "about": "How it works",
+    "departures": "Departures"
   },
   "packages": {
     "heading": "Packages",
@@ -96,15 +99,6 @@
     "alreadyJoined": "You already joined this departure.",
     "goMy": "See my trips",
     "ctaFull": "Pay in full with Toss"
-  },
-  "login": {
-    "heading": "Log in",
-    "lead": "This is the demo. Enter a name to log in. The real service uses Kakao or Naver accounts.",
-    "name": "Name (shown to your group)",
-    "namePlaceholder": "e.g. Jimin",
-    "kakao": "Continue with Kakao",
-    "naver": "Continue with Naver",
-    "errorName": "Please enter a name."
   },
   "pay": {
     "heading": "Checkout",
@@ -244,5 +238,123 @@
     "viewGroup": "See group",
     "join": "Join",
     "saved": "Saved your travel style"
+  },
+  "auth": {
+    "loginHeading": "Log in",
+    "loginLead": "Log in with email, or continue with Kakao or Naver.",
+    "email": "Email",
+    "password": "Password",
+    "login": "Log in",
+    "or": "or",
+    "kakao": "Continue with Kakao",
+    "naver": "Continue with Naver",
+    "noAccount": "No account yet?",
+    "signup": "Sign up",
+    "haveAccount": "Already have an account?",
+    "signupHeading": "Sign up",
+    "signupLead": "This is what your group sees. We ask for your passport name separately after payment.",
+    "name": "Name (nickname)",
+    "namePlaceholder": "e.g. Jimin",
+    "passwordHint": "8+ characters",
+    "gender": "Gender",
+    "genderF": "Female",
+    "genderM": "Male",
+    "genderO": "Other",
+    "birthYear": "Birth year",
+    "intro": "One-line intro (optional)",
+    "introPlaceholder": "e.g. Into photography, want to shoot the stars",
+    "agree": "I agree to the terms and privacy policy",
+    "create": "Create account",
+    "demoNote": "Demo: accounts are stored in this browser only. The real service uses Kakao and Naver login.",
+    "oauthHeading": "Continue with {provider}",
+    "oauthLead": "Demo: the real {provider} login window would open here. Enter a name to create the account.",
+    "oauthContinue": "Agree and continue",
+    "providerKakao": "Kakao",
+    "providerNaver": "Naver",
+    "providerEmail": "Email",
+    "errors": {
+      "invalid": "Email or password doesn't match.",
+      "notFound": "No account with this email. Please sign up.",
+      "exists": "This email is already registered. Please log in.",
+      "name": "Please enter a name.",
+      "password": "Password must be at least 8 characters.",
+      "agree": "Please agree to the terms.",
+      "email": "Please check the email format."
+    },
+    "loginRequired": "This page needs you to be logged in."
+  },
+  "me": {
+    "heading": "My page",
+    "profile": "Profile",
+    "signedInWith": "Signed in with {provider}",
+    "edit": "Edit profile",
+    "save": "Save",
+    "saved": "Saved",
+    "travelStyle": "My travel style",
+    "noStyle": "Not set yet.",
+    "setStyle": "Set it up",
+    "editStyle": "Edit",
+    "trips": "My trips",
+    "tripsCount": "{n} joined",
+    "logout": "Log out",
+    "deleteAccount": "Delete account",
+    "deleteConfirm": "Delete for real? Your bookings go too.",
+    "deleted": "Account deleted."
+  },
+  "about": {
+    "heading": "How it works",
+    "how": "The flow",
+    "steps": [
+      [
+        "Pick a package and a date",
+        "Each departure is one 6-seat vehicle group. See seats and members before you join."
+      ],
+      [
+        "Match your travel style",
+        "7 questions and optional MBTI rank groups by fit. Optional, but recommended."
+      ],
+      [
+        "Pay only the flight portion first",
+        "Pay the deposit (flight cost) via Toss Payments and your seat is confirmed."
+      ],
+      [
+        "Remainder by 7 days before departure",
+        "Pick card installments at Toss if you like. We charge no interest or fees."
+      ],
+      [
+        "Confirmed at 4 travellers",
+        "If the minimum is reached 14 days before departure the trip is confirmed; otherwise move the date or get a full refund."
+      ]
+    ],
+    "refund": "Refund policy (draft)",
+    "refundRows": [
+      ["Departure not confirmed (our side)", "100% refund"],
+      ["Cancel 30+ days before", "Deposit refunded minus airline rules, remainder in full"],
+      ["Cancel within 30 days", "Deposit (flight) non-refundable, remainder per policy"],
+      ["Remainder unpaid", "Reminders on D+0 and D+3, then seat released; deposit rules apply"]
+    ],
+    "refundNote": "Draft, before legal review.",
+    "faq": "FAQ",
+    "faqs": [
+      ["Can I come alone?", "Most people do. That's what companion matching is for."],
+      [
+        "Do I need a visa?",
+        "Korean passports enter visa-free (as of 2026; re-check before departure)."
+      ],
+      ["Does the guide speak Korean?", "Yes, every departure has a Korean-speaking guide."],
+      [
+        "Can I shower?",
+        "Check the 'camps with showers' note on the itinerary. Some Gobi stretches have none for ~2 days."
+      ],
+      [
+        "Where do I pay?",
+        "All payments go through Toss Payments. Card details are entered at Toss only."
+      ]
+    ]
+  },
+  "departuresPage": {
+    "heading": "All departures",
+    "lead": "Soonest first. Use Companions to rank them by fit.",
+    "filterAll": "All"
   }
 }
