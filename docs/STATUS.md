@@ -3,7 +3,8 @@
 Updated 2026-10-06. One-page summary for anyone (or any Claude chat) picking this up.
 Code lives in the `hogjuulelt1-cmyk/Travel-APP` repo, branch `main`.
 
-- Clickable demo (private, share from the page's Share menu): https://claude.ai/artifact/NPyd6LSYbr397jnBnm8sPq
+- Live (Vercel, auto-deploys from `main`): see the Vercel project `travel-app` in the `andy-e23d` team
+- Clickable single-file demo (private, share from the page's Share menu): https://claude.ai/artifact/NPyd6LSYbr397jnBnm8sPq
 - Code: https://github.com/hogjuulelt1-cmyk/Travel-APP
 - Detail docs: `CLAUDE.md`, `docs/product-spec.md`, `docs/business-model.md`, `docs/packages.md`, `docs/tech-stack.md`, `docs/risks-and-open-questions.md`, `docs/roadmap.md`
 
